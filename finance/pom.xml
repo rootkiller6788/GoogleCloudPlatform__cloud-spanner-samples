@@ -34,7 +34,10 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <grpc.version>1.38.0</grpc.version>
+        <!-- Keep this on the same version libraries-bom below resolves io.grpc to.
+             Anything below 1.43.0 is missing GoogleDefaultChannelCredentials.newBuilder(),
+             which gax calls, so the server dies on startup with NoSuchMethodError. -->
+        <grpc.version>1.45.1</grpc.version>
     </properties>
 
     <!--
